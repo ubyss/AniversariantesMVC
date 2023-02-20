@@ -1,0 +1,36 @@
+﻿@model List<Aniversariantes.Domain.Entities.Aniversariante>;
+
+<div class="text-center">
+    <br />
+    <h1 class="display-4">Listagem de aniversariantes</h1>
+    <p>Selecione os aniversariantes</p>
+    <br />
+    @using (Html.BeginForm("selecionar", "aniversariante", FormMethod.Post)){
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Data de aniversario</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @{
+                    foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@item.Nome @item.Sobrenome</td>
+                        <td>@item.DataAniversario</td>
+                        <td>@item.Email</td>
+                        <td><input type="checkbox" name="Selected" value="@item.Id"></td>
+                    </tr>
+                    }
+                }
+            </tr>
+        </tbody>
+    </table>
+    <button class="button" type="submit">Enviar selecionados</button>
+    }
+</div>
